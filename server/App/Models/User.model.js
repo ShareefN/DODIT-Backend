@@ -9,17 +9,28 @@ const UserSchema = new mongoose.Schema(
     password: { type: String },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: String },
+    status: { type: String },
+    isVerified: { type: Boolean },
+    settings: { type: Array },
+    hits: { type: String },
+    followers: { type: Array },
+    following: { type: Array },
+    dateOfBirth: { type: String },
+    prefrences: { type: Array },
+    expertise: { type: Array },
+    numberOfPosts: { type: String },
+    numberOfFollowers: { type: String },
+    numberOfFollowing: { type: String }
   },
   {
     strict: true,
-    timestamps: true,
+    timestamps: true
   }
 );
 
 // hash password before save docs
-UserSchema.pre("save", async function (next) {
+UserSchema.pre("save", async function(next) {
   if (this.isModified("password")) {
-    console.log("check password ", this.password);
 
     let salt = bcrypt.genSaltSync(10);
     let hashedPassword = bcrypt.hashSync(this.password, salt);
@@ -29,7 +40,7 @@ UserSchema.pre("save", async function (next) {
 });
 
 // * use compare password method
-UserSchema.methods.comparePassword = function (password) {
+UserSchema.methods.comparePassword = function(password) {
   let isEqual = bcrypt.compareSync(password, this.password);
   return isEqual; //true or false
 };
