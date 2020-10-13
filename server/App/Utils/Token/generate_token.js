@@ -1,5 +1,5 @@
-const { sign } = require('jsonwebtoken');
+const { sign } = require("jsonwebtoken");
 
-exports.generateJWT = ({ _id, email }) => {
-  return sign({ _id, email }, process.env.ACCESS_TOKEN_SECRET);
+exports.generateJWT = ({ _id }) => {
+  return sign({ _id }, process.env.ACCESS_TOKEN_SECRET);
 };

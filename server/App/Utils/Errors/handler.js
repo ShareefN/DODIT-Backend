@@ -2,7 +2,6 @@ const { fields } = require("./requiredFields");
 const { messages } = require("./messages");
 exports.errHandler = (err, res) => {
   try {
-    console.log(err);
     let message, status;
     // handle general errors
     if (typeof err == "number") {

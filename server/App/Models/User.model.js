@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const { v4: uuid } = require("uuid");
 
 const UserSchema = new mongoose.Schema(
   {
-    email: { type: String, index: true, unique: true },
-    phone: { type: String, index: true, required: true },
-    password: { type: String, required: true },
+    email: { type: String },
+    phone: { type: String },
     username: { type: String },
-    uuid: { type: String, index: { unique: true }, default: uuid },
+    password: { type: String },
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: String },
   },
   {
     strict: true,
@@ -16,10 +16,12 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-// * hash password before saving
+// hash password before save docs
 UserSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
-    let salt = bcrypt.genSaltSync(5);
+    console.log("check password ", this.password);
+
+    let salt = bcrypt.genSaltSync(10);
     let hashedPassword = bcrypt.hashSync(this.password, salt);
     this.password = hashedPassword;
   }
@@ -27,9 +29,9 @@ UserSchema.pre("save", async function (next) {
 });
 
 // * use compare password method
-UserSchema.methods.comparePassword = async function (password) {
-  let isEqual = await bcrypt.compareSync(password, this.password);
-  return isEqual;
+UserSchema.methods.comparePassword = function (password) {
+  let isEqual = bcrypt.compareSync(password, this.password);
+  return isEqual; //true or false
 };
 
 exports.User = mongoose.model("User", UserSchema);
