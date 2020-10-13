@@ -9,7 +9,7 @@ exports.forgetPassword = async (req, res) => {
   let { identity } = req.body;
   async.waterfall(
     [
-      (done) => {
+      done => {
         crypto.randomBytes(20, (err, buf) => {
           let token = buf.toString("hex");
           done(err, token);
@@ -18,9 +18,9 @@ exports.forgetPassword = async (req, res) => {
       (token, done) => {
         User.findOne(
           {
-            $or: [{ email: identity }, { username: identity }],
+            $or: [{ email: identity }, { username: identity }]
           },
-          function (err, user) {
+          function(err, user) {
             if (err) return errHandler(err, res);
             if (!user) return errHandler(1, res);
 
@@ -28,9 +28,9 @@ exports.forgetPassword = async (req, res) => {
               { _id: user._id },
               {
                 resetPasswordToken: token,
-                resetPasswordExpires: Date.now() + 3600000,
+                resetPasswordExpires: Date.now() + 3600000
               },
-              function (err) {
+              function(err) {
                 if (err) return errHandler(err, res);
                 done(err, token, user);
               }
@@ -42,24 +42,24 @@ exports.forgetPassword = async (req, res) => {
         const msg = {
           to: user.email, // Change to your recipient
           from: process.env.SENDER_EMAIL, // Change to your verified sender
-          subject: "Sending with SendGrid is Fun",
+          subject: "Reset Account Password",
           html: `<strong>user token is ${token}</strong>
             <br>
-            <a href="http://localhost:5000/auth/resetPassword/${token}">please follow this link</a>
-          `,
+            <a href="http://localhost:5000/auth/resetPassword/email=${user.email}&token=${token}">please follow this link</a>
+          `
         };
         sgMail
           .send(msg)
           .then(() => {
             done(null, "done");
           })
-          .catch((error) => {
+          .catch(error => {
             console.error("err ", error);
             return errHandler(error, res);
           });
-      },
+      }
     ],
-    (err) => {
+    err => {
       console.log(err);
       if (err) return errHandler(err, res);
       res.send({ success: true, status: 200, message: "check  email" });
