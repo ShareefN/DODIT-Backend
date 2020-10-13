@@ -45,7 +45,7 @@ exports.forgetPassword = async (req, res) => {
           subject: "Reset Account Password",
           html: `<strong>user token is ${token}</strong>
             <br>
-            <a href="http://localhost:5000/auth/resetPassword/email=${user.email}&token=${token}">please follow this link</a>
+            <a href="http://localhost:5000/auth/resetPassword/${token}">please follow this link</a>
           `
         };
         sgMail
