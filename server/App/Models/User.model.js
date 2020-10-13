@@ -13,14 +13,11 @@ const UserSchema = new mongoose.Schema(
     isVerified: { type: Boolean },
     settings: { type: Array },
     hits: { type: String },
-    followers: { type: Array },
-    following: { type: Array },
     dateOfBirth: { type: String },
+    gender: { type: String },
     prefrences: { type: Array },
     expertise: { type: Array },
     numberOfPosts: { type: String },
-    numberOfFollowers: { type: String },
-    numberOfFollowing: { type: String }
   },
   {
     strict: true,
@@ -31,7 +28,6 @@ const UserSchema = new mongoose.Schema(
 // hash password before save docs
 UserSchema.pre("save", async function(next) {
   if (this.isModified("password")) {
-
     let salt = bcrypt.genSaltSync(10);
     let hashedPassword = bcrypt.hashSync(this.password, salt);
     this.password = hashedPassword;
