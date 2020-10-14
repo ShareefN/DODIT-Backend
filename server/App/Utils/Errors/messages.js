@@ -12,11 +12,19 @@ exports.messages = {
     status: 401,
   },
   4: {
-    txt: "field is required",
+    txt: "Field is required",
     status: 400,
   },
   5: {
     txt: "Invalid token",
+    status: 400,
+  },
+  6: {
+    txt: "Phone is already exist",
+    status: 409,
+  },
+  7: {
+    txt: "Phone is required",
     status: 400,
   },
 
