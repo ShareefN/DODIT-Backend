@@ -12,7 +12,7 @@ exports.messages = {
     status: 401,
   },
   4: {
-    txt: "field is required",
+    txt: "Field is required",
     status: 400,
   },
   5: {
@@ -24,10 +24,15 @@ exports.messages = {
     status: 400,
   },
   7: {
-    txt: "Please provide a prefrence",
+    txt: "Phone is required",
     status: 400,
   },
-
+  8: {
+    txt: "Please provide a prefrence",
+    txt: "Phone is already exist",
+    status: 409,
+  },
+  
   // general
   503: {
     txt: "SOME THING WENT WRONG",

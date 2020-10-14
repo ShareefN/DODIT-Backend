@@ -13,11 +13,10 @@ const UserSchema = new mongoose.Schema(
     isVerified: { type: Boolean },
     settings: { type: Array },
     hits: { type: String },
-    gender: { type: String },
     dateOfBirth: { type: String },
+    gender: { type: String },
     prefrences: { type: Array },
     expertise: { type: Array },
-    numberOfPosts: { type: String }
   },
   {
     strict: true,
