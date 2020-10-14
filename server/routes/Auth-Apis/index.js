@@ -15,5 +15,6 @@ router.post("/reset_password", authUserAction.resetPassword);
 
 router.post("/check_phone", authPhoneUserAction.checkPhone);
 router.post("/check_phone_verification", authPhoneUserAction.isValidPhone);
+router.post("/login_from_phone", authPhoneUserAction.loginFromPhone);
 
 module.exports = router;

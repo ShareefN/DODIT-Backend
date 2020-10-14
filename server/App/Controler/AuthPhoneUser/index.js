@@ -1,5 +1,5 @@
-const { userPhoneSignUp } = require("./signupFromPhone");
 const { checkPhone } = require("./check_phone");
 const { isValidPhone } = require("./phone_verification_check");
+const { loginFromPhone } = require("./login_from_phone");
 
-module.exports = { userPhoneSignUp, checkPhone, isValidPhone };
+module.exports = { checkPhone, isValidPhone, loginFromPhone };
