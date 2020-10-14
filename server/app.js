@@ -8,6 +8,7 @@ const app = express();
 const authRouter = require("./routes/Auth-Apis");
 const apisRouter = require("./routes/Apis");
 require("./Database");
+
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());

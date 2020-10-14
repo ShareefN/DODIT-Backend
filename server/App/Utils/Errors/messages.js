@@ -4,7 +4,7 @@ exports.messages = {
     status: 404,
   },
   2: {
-    txt: "User already exist",
+    txt: "User already exists",
     status: 409,
   },
   3: {
@@ -17,6 +17,14 @@ exports.messages = {
   },
   5: {
     txt: "Invalid token",
+    status: 400,
+  },
+  6: {
+    txt: "Prefrence already exists",
+    status: 400,
+  },
+  7: {
+    txt: "Please provide a prefrence",
     status: 400,
   },
 
