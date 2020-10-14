@@ -17,7 +17,6 @@ const UserSchema = new mongoose.Schema(
     gender: { type: String },
     prefrences: { type: Array },
     expertise: { type: Array },
-    numberOfPosts: { type: String },
   },
   {
     strict: true,

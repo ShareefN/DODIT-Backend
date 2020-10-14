@@ -1,5 +1,6 @@
 const { User } = require("../../Models/User.model");
 const { errHandler } = require("../../Utils/Errors");
+
 exports.checkIdentity = async (req, res) => {
   const { identity } = req.body;
   try {

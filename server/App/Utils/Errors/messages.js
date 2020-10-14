@@ -4,7 +4,7 @@ exports.messages = {
     status: 404,
   },
   2: {
-    txt: "User already exist",
+    txt: "User already exists",
     status: 409,
   },
   3: {
@@ -20,14 +20,19 @@ exports.messages = {
     status: 400,
   },
   6: {
-    txt: "Phone is already exist",
-    status: 409,
+    txt: "Prefrence already exists",
+    status: 400,
   },
   7: {
     txt: "Phone is required",
     status: 400,
   },
-
+  8: {
+    txt: "Please provide a prefrence",
+    txt: "Phone is already exist",
+    status: 409,
+  },
+  
   // general
   503: {
     txt: "SOME THING WENT WRONG",
