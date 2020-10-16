@@ -8,7 +8,7 @@ exports.Create_Phone_Verification = async (phone, res) => {
       .services(process.env.TWILIO_SERVICE_SID)
       .verifications.create({ to: `${phone}`, channel: "sms" });
     res.send({
-      message: `has been sent 4 digest code to ${phone}`,
+      message: `has been sent 4 digit code to ${phone}`,
       status: 200,
       responseVerification,
     });

@@ -6,12 +6,13 @@ exports.createPrefrence = async (req, res) => {
 
   if (!prefrence) return errHandler(8, res);
 
-  let pref = await Prefrences.findOne({ where: { prefrence } });
+  let pref = await Prefrences.findOne({ prefrence });
 
   // Check if prefrence already exists
   if (pref) return errHandler(6, res);
 
   let newPrefrence = await new Prefrences({ ...req.body });
+  await newPrefrence.save();
 
   return res.send({
     success: true,
