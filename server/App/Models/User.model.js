@@ -17,7 +17,8 @@ const UserSchema = new mongoose.Schema(
     gender: { type: String },
     prefrences: { type: Array, default: [] },
     expertise: { type: Array, default: [] },
-    avrageTimeToVote: { type: Number, default: 0 }
+    avrageTimeToVote: { type: Number, default: 0 },
+    posts: { type: Array, deafult: [] }
   },
   {
     strict: true,
