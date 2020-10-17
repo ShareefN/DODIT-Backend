@@ -10,7 +10,6 @@ const UserSchema = new mongoose.Schema(
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: String },
     status: { type: String, deafult: "active" },
-    isVerified: { type: Boolean, deafult: false },
     settings: { type: Array },
     hits: { type: Number, default: 0 },
     dateOfBirth: { type: String },

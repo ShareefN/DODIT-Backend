@@ -9,7 +9,6 @@ exports.updatePrefernce = async (req, res) => {
 
   const checkPrefrence = await Prefrences.findOne({ prefrence });
   if (checkPrefrence) return errHandler(6, res);
-
-  const newPrefrence = await Prefrences.updateOne({ _id: id }, { prefrence });
+  const newPrefrence = await Prefrences.updateOne({ _id: id }, { ...req.body });
   return res.send({ sucess: true, newPrefrence });
 };
