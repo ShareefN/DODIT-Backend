@@ -4,14 +4,21 @@ const PostSchema = new mongoose.Schema(
   {
     userId: { type: Number },
     category: { type: String },
-    this: { type: Number, default: 0 },
-    that: { type: Number, default: 0 },
+    percentages: {
+      this: { type: Number, default: 0 },
+      that: { type: Number, default: 0 }
+    },
+    urls: {
+      this: { type: String },
+      that: { type: String }
+    },
     numberOfViews: { type: Number, default: 0 },
-    thisUrl: { type: String },
-    thatUrl: { type: String },
     skippedCount: { type: Number, default: 0 },
-    rating: { type: Number, default: 0 },
-    coordinates: {},
+    postRate: { type: Number, default: 0 },
+    coordinates: {
+      longitude: { type: Number, default: 0 },
+      latitude: { type: String, default: 0 }
+    },
     show: { type: Boolean, default: true },
     inappropriateRates: { type: Number, default: 0 }
   },
