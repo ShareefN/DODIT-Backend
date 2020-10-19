@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const ThatSchema = new mongoose.Schema(
   {
     thatUrl: { type: String },
-    category: { type: String },
+    category: { type: mongoose.Schema.Types.ObjectId, ref: "Prefrences" },
   },
   {
     strict: true,

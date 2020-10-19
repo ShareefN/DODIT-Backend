@@ -14,10 +14,10 @@ const UserSchema = new mongoose.Schema(
     hits: { type: Number, default: 0 },
     dateOfBirth: { type: String },
     gender: { type: String },
-    prefrences: { type: Array, default: [] },
-    expertise: { type: Array, default: [] },
-    avrageTimeToVote: { type: Number, default: 0 },
-    posts: { type: Array, deafult: [] }
+    prefrences: { type: mongoose.Schema.Types.ObjectId, ref: "Prefrences" },
+    expertise: { type: mongoose.Schema.Types.ObjectId, ref: "Experties" },
+    postsId: { type: mongoose.Schema.Types.ObjectId, ref: "Post" },
+    voteId: { type: mongoose.Schema.Types.ObjectId, ref: "Vote" }
   },
   {
     strict: true,
