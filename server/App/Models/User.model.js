@@ -17,16 +17,23 @@ const UserSchema = new mongoose.Schema(
     prefrences: { type: mongoose.Schema.Types.ObjectId, ref: "Prefrences" },
     expertise: { type: mongoose.Schema.Types.ObjectId, ref: "Experties" },
     postsId: { type: mongoose.Schema.Types.ObjectId, ref: "Post" },
-    voteId: { type: mongoose.Schema.Types.ObjectId, ref: "Vote" }
+    voteId: { type: mongoose.Schema.Types.ObjectId, ref: "Vote" },
+    locations: [
+      {
+        longitude: { type: Number },
+        latitude: { type: Number },
+        type: { type: Number },
+      },
+    ],
   },
   {
     strict: true,
-    timestamps: true
+    timestamps: true,
   }
 );
 
 // hash password before save docs
-UserSchema.pre("save", async function(next) {
+UserSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     let salt = bcrypt.genSaltSync(10);
     let hashedPassword = bcrypt.hashSync(this.password, salt);
@@ -36,7 +43,7 @@ UserSchema.pre("save", async function(next) {
 });
 
 // * use compare password method
-UserSchema.methods.comparePassword = function(password) {
+UserSchema.methods.comparePassword = function (password) {
   let isEqual = bcrypt.compareSync(password, this.password);
   return isEqual; //true or false
 };
