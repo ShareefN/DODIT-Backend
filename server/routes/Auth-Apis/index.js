@@ -17,4 +17,8 @@ router.post("/check_phone", authPhoneUserAction.checkPhone);
 router.post("/check_phone_verification", authPhoneUserAction.isValidPhone);
 router.post("/login_from_phone", authPhoneUserAction.loginFromPhone);
 
+// check if email or username exsits
+router.post("/check_email", authUserAction.checkEmail);
+router.post("/check_username", authUserAction.checkUsername);
+
 module.exports = router;
