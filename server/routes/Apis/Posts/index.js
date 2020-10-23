@@ -7,6 +7,7 @@ const { upload } = require("../../../App/Utils/Upload");
 // const { expertiseAction } = require("../../../App/Controler");
 
 // Post Api's
+//example api api/posts/create_post
 router.post("/create_post", isUserAuth, upload.single("image"), (req, res) => {
   let test = req.file.location;
   res.send({ ...req.body, test });
