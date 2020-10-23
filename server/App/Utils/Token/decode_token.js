@@ -6,8 +6,8 @@ exports.decodeJWT = async (req, res) => {
     // get the token from the header
     let token = await extractJWT(req, res);
     if (!token) return false;
-    const { _id, email } = await verify(token, process.env.ACCESS_TOKEN_SECRET);
-    return _id ? { _id, email } : null;
+    const { _id } = await verify(token, process.env.ACCESS_TOKEN_SECRET);
+    return _id ? { _id } : null;
   } catch (err) {
     return false;
   }

@@ -1,16 +1,10 @@
-const express = require("express");
-const router = express.Router();
+const express = require("express")();
+const Prefrences = require("./Prefrences");
+const Expertise = require("./Expertise");
+const Posts = require("./Posts");
 
-const { prefrencesAction, expertiseAction } = require("../../App/Controler");
+express.use("/prefrences", Prefrences);
+express.use("/expertise", Expertise);
+express.use("/posts", Posts);
 
-// Prefrences Api's
-router.post("/create_prefrence", prefrencesAction.createPrefrence);
-router.get("/get_prefrences", prefrencesAction.getPrefrences);
-router.put("/update_prefrence/:id", prefrencesAction.updatePrefernce);
-
-// Expertise Api's
-router.post("/create_expertise", expertiseAction.createExpertise);
-router.get("/get_expertise", expertiseAction.getExpertise);
-router.put("/update_expertise/:id", expertiseAction.updateExpertise);
-
-module.exports = router;
+module.exports = express;
